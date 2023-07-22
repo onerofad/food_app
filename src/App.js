@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { createMedia } from "@artsy/fresnel"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import  DesktopContainer from './Components/DesktopContainer'
+import MobileContainer from './Components/MobileContainer'
 
-function App() {
+
+const { MediaContextProvider, Media } = createMedia({
+   breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+   }
+})
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MediaContextProvider>
+      <Media at='mobile'>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<MobileContainer />} />
+          </Routes>
+        </BrowserRouter>
+
+      </Media>
+      <Media greaterThan='mobile'>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<DesktopContainer />} />
+          </Routes>
+        </BrowserRouter>
+
+      </Media>
+    </MediaContextProvider>
+
+  )
 }
 
 export default App;
