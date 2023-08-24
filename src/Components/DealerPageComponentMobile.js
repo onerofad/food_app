@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { Menu, Sidebar, Segment, Icon, Button, Container, Divider } from "semantic-ui-react"
 import {Link, useNavigate} from 'react-router-dom'
-import HomePageHeading from "./HomePageHeading"
-import BodySectionMobile from "./BodySectionMobile"
 import Footer from "./Footer"
+import HomePageHeadingDealer from "./HomePageHeadingDealer"
+import DealerPageComponent from "./DealerPageComponent"
 
-const MobileContainer = () => {
+const DealerPageComponentMobile = () => {
    const [sidebarOpened, setSidebarOpened] = useState()
    const navigate = useNavigate()
    return(
@@ -20,18 +20,21 @@ const MobileContainer = () => {
          style={{backgroundColor: 'teal'}}
 
       >
+       
+                    <Menu.Item as="a" onClick={() => navigate("/")}>Home</Menu.Item>
                     <Menu.Item as="a" onClick={() => navigate("/openproducts/1")}>Products</Menu.Item>
                     <Menu.Item as="a" onClick={() => navigate("/history")}>Our History</Menu.Item>
                     <Menu.Item as="a" onClick={() => navigate("/dealer")}>Our Dealers</Menu.Item>
-                    <Menu.Item as="a">Recommended</Menu.Item>              
+                    <Menu.Item as="a">Recommended</Menu.Item> 
+        
 
       </Sidebar>
       <Sidebar.Pusher dimmed={sidebarOpened}>
                 <Segment
                  textAlign='center'
                  vertical
-                 id='bgSegment'
-                 style={{ minHeight: 350, padding: '1em 0em' }} 
+                 id='bgSegmentHistory'
+                 style={{ minHeight: 150, padding: '1em 0em' }} 
                 >
                     <Menu
                      fixed='top'
@@ -52,13 +55,13 @@ const MobileContainer = () => {
                             
                         </Container>
                     </Menu>
-                    <HomePageHeading mobile />
+                    <HomePageHeadingDealer mobile />
                 </Segment>
             </Sidebar.Pusher>
-            <BodySectionMobile />
+            <DealerPageComponent />
             <Footer />
      </Sidebar.Pushable>
    )
    
 }
-export default MobileContainer
+export default DealerPageComponentMobile

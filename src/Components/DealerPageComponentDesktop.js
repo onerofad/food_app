@@ -1,21 +1,23 @@
+import Footer from "./Footer"
+import HistoryComponent from "./HistoryComponent"
 import { Button, Container, Grid, Header, Icon, Menu, Search, Segment } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
-import HomePageHeading from './HomePageHeading'
-import Footer from './Footer'
-import BodySectionDesktop from './BodySectionDesktop'
-import { Link, useNavigate } from 'react-router-dom'
-import SearchComponent from './SearchComponent'
+import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import HomePageHeadingDealer from "./HomePageHeadingDealer"
+import DealerPageComponent from "./DealerPageComponent"
+import SearchComponent from "./SearchComponent"
 
-const DesktopContainer = () => {
+const DealerPageComponentDesktop = () => {
+
     const navigate = useNavigate()
 
     return(
         <div>
-       <Segment 
-          id="bgSegment"
+           <Segment 
+          id="bgSegmentHistory"
           textAlign='center' 
           inverted  
-          style={{minHeight: 400}}
+          style={{minHeight: 250}}
 
         >
             <Menu
@@ -28,26 +30,22 @@ const DesktopContainer = () => {
                     <Menu.Item>
                         <Link style={{color: '#000'}} to='/'>KEFENA.COM</Link>
                     </Menu.Item>
-                    <Menu.Item active as="a" onClick={() => navigate("/")}>Home</Menu.Item>
+                    <Menu.Item as="a" onClick={() => navigate("/")}>Home</Menu.Item>
                     <Menu.Item as="a" onClick={() => navigate("/openproducts/1")}>Products</Menu.Item>
                     <Menu.Item as="a" onClick={() => navigate("/history")}>Our History</Menu.Item>
-                    <Menu.Item as="a" onClick={() => navigate("/dealer")}>Our Dealers</Menu.Item>
+                    <Menu.Item active as="a" onClick={() => navigate("/dealer")}>Our Dealers</Menu.Item>
                     <Menu.Item as="a">Recommended</Menu.Item>
                     <Menu.Item position='right'>
-                        <SearchComponent />                    
+                        <SearchComponent />
                     </Menu.Item>
                 </Container>
                    
             </Menu>
-        <HomePageHeading />
+        <HomePageHeadingDealer />
        </Segment>
-       <BodySectionDesktop />
-       
+       <DealerPageComponent />       
        <Footer />
-         </div>
-        
-
+        </div>
     )
-    
 }
-export default DesktopContainer
+export default DealerPageComponentDesktop

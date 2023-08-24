@@ -1,106 +1,33 @@
 import { Button, Grid } from "semantic-ui-react"
+import { getPopularProduct } from "./Db"
+import { useNavigate } from "react-router-dom"
 
 const PopularComponent = () => {
-
+    const navigate = useNavigate()
     return(
-       <Grid>
+
+       <Grid stackable>
         <Grid.Row>
-            <Grid.Column width={4}>
-                <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Beans & Lentils
-                </Button>
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Vegetables
-                </Button>
-                
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Dough
-                </Button>
-                
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Seasoning
-                </Button>
-                
-            </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-            <Grid.Column width={4}>
-                <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Cheese & Dairy
-                </Button>
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Falafel & Burgers
-                </Button>
-                
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Hummus
-                </Button>
-                
-            </Grid.Column>
-            <Grid.Column width={4}>
-            <Button 
-                   fluid 
-                   size="large" 
-                   basic 
-                   color="teal" 
-                   circular
-                >
-                    Tubes
-                </Button>
-                
-            </Grid.Column>
+            {
+                getPopularProduct().map((product) => {
+                   return(
+                        <Grid.Column width={4}>
+                        <Button 
+                        fluid 
+                        size="huge" 
+                        basic 
+                        color="teal" 
+                        circular
+                        onClick={() => navigate("/products/" + product.name + "/" + product.prodId)}
+                        >
+                            {product.name}
+                        </Button>
+                        <br/>
+                    </Grid.Column>
+                   )
+                })
+            }
+           
         </Grid.Row>
        </Grid>
     )
