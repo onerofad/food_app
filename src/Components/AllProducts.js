@@ -40,7 +40,7 @@ const AllProducts = ({mobile}) => {
                if(product.prodId >= firstItemId && product.prodId <= lastItemId){
                 return(
                     <Grid.Column computer={4} mobile={8} tablet={8}>
-                        <Segment raised style={{minHeight: mobile ? 300 : 330}} >
+                        <Segment raised style={{minHeight: mobile ? 280 : 330}} >
                             <Image style={{cursor: 'pointer'}} onClick ={() => {handleBtnProduct(product.prodId,product.name.replaceAll(" ", "-"))}} src={product.image} centered />
                             <Message color="teal" size="mini">
                                 <Message.Header style={{cursor: '', fontSize: mobile ? '1.2em' : ''}} onClick ={() => {handleBtnProduct(product.prodId,product.name.replaceAll(" ", "-"))}}>{product.name}</Message.Header>
