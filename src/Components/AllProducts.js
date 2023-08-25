@@ -43,7 +43,7 @@ const AllProducts = ({mobile}) => {
                         <Segment raised style={{}} >
                             <Image style={{cursor: 'pointer'}} onClick ={() => {handleBtnProduct(product.prodId,product.name.replaceAll(" ", "-"))}} src={product.image} centered />
                             <Message color="teal" size="mini">
-                                <Message.Header style={{cursor: '', fontSize: mobile ? '1em' : ''}} onClick ={() => {handleBtnProduct(product.prodId,product.name.replaceAll(" ", "-"))}}>{product.name}</Message.Header>
+                                <Message.Header style={{cursor: '', fontSize: mobile ? '0.8em' : ''}} onClick ={() => {handleBtnProduct(product.prodId,product.name.replaceAll(" ", "-"))}}>{product.name}</Message.Header>
                             </Message>
                         </Segment>
                         <br/>
